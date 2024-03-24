@@ -2,15 +2,15 @@
     <?php
     // Function to get the term image URL for a given term ID
     function get_term_image_url($term_id) {
-        // Replace 'featured_image_treatment_type' with your actual Meta Box field ID
-        $images = rwmb_meta('featured_image_treatment_type', ['object_type' => 'term', 'size' => 'full'], $term_id);
+        // Replace 'your-custom-img-id' with your actual Meta Box field ID
+        $images = rwmb_meta('your-custom-img-id', ['object_type' => 'term', 'size' => 'full'], $term_id);
 
         // Check if there are images and return the first image URL
         if (!empty($images)) {
             $image = reset($images);
             return esc_url($image['full_url']); // Use 'full_url' to get the original resolution
         } else {
-            return '/wp-content/uploads/2024/01/seymour-clinic-surgical-excellence-in-the-heart-of-london-scaled.webp'; // Return a default image URL if no image is found
+            return '/wp-content/uploads/placeholder-image.webp'; // Return a default image URL if no image is found - replace this with an image of your choice
         }
     }
 
@@ -19,7 +19,7 @@
 
     // Loop through each ID and retrieve the corresponding taxonomy terms
     foreach ($taxonomy_ids as $term_id) {
-        $term = get_term($term_id, 'treatment-type');
+        $term = get_term($term_id, 'your-taxonomy');
         
         // Check if the term exists
         if ($term && !is_wp_error($term)) {
@@ -28,7 +28,7 @@
 
             // Display child terms first
             $child_terms = get_terms(array(
-                'taxonomy' => 'treatment-type',
+                'taxonomy' => 'your-taxonomy',
                 'parent' => $term_id,
             ));
 
@@ -71,9 +71,9 @@
         }
     }
 
-    // Get all parent taxonomies for the 'treatment-type' taxonomy
+    // Get all parent taxonomies for the 'your-taxonomy' taxonomy
     $parent_taxonomies = get_terms(array(
-        'taxonomy' => 'treatment-type',
+        'taxonomy' => 'your-taxonomy',
         'parent' => 0,
         'exclude' => $taxonomy_ids,
     ));
@@ -83,7 +83,7 @@
         ?>
         <div class="taxonomy-card specialities-card">
           <div class="taxonomy-card__overlay"> </div>
-      <img class="taxonomy-card__img" src="/wp-content/uploads/2024/03/seymour-clinic-all-treatments.webp" alt="other specialities">      
+      <img class="taxonomy-card__img" src="/wp-content/uploads/replace-with-your-image-url.webp" alt="other specialities">      <!--  replace this image url with the image url you would like to use for the 4th grid element-->
       <div class="taxonomy-card__content-wrap"> 
           <ul class="specialities-list">
                 <?php
@@ -100,12 +100,14 @@
                 }
                 // View All item
                 ?>
-                <li><a href="/aesthetic-treatments-london/">View all</a></li>
+                <li><a href="/replace-with-your-slug/">View all</a></li>
             </ul>
-            <h2 class="taxonomy-card__title"><a href="/aesthetic-treatments-london/">Other Specialities</a></h2>
+            <h2 class="taxonomy-card__title"><a href="/replace-with-your-slug/">Other Specialities</a></h2>
         </div>
                       </div>
         <?php
     }
+    ?>
+</div>
     ?>
 </div>

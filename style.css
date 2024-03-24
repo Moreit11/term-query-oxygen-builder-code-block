@@ -1,1 +1,128 @@
+.taxonomy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust the minmax values as needed */
+  gap: 20px; /* Adjust the gap between cards as needed */
+  grid-auto-rows: 1fr; /*make all grid children the same height*/
+}
 
+.taxonomy-card {
+  position:relative;
+  border-radius: 0.75rem;
+  overflow:hidden;
+  box-shadow: 4px 4px 8px color(21);
+}
+/*content wrapper to space element on card*/
+.taxonomy-card__content-wrap{
+  padding: 16% 8%;
+  gap:2em;
+  display:flex;
+  height:100%;
+  flex-direction: column;
+  align-items:center;
+  justify-content:end;
+}
+
+
+/*remove list styles*/
+.taxonomy-card ul{
+  list-style-type:none;
+  padding: 0;
+  gap:3%;
+  font-family: Raleway;
+  font-weight: 600;
+  text-align:center;
+}
+
+/*link styles for the treatment lists*/
+.taxonomy-card li a {
+
+  position:relative;
+  z-index:5;
+  opacity:0;
+  color:color(5);
+  text-decoration:none;
+  text-transform: capitalize;
+  transition:  .5s ease-out;
+ 
+  
+}
+/*chang list element color on hover*/
+
+.taxonomy-card li a:hover {
+  color: color(22);
+}
+.taxonomy-card li a:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: color(22);
+  transform-origin: center;
+  transition: 0.4s ease-out;
+}
+
+.taxonomy-card li a:hover:after {
+  transform: scaleX(1);
+  transform-origin: center;
+}
+
+/*display card elements on hovering the card*/
+.taxonomy-card:hover li a {
+  opacity:1;
+}
+
+/*make list elements clickable over image overlay*/
+.taxonomy-card li a:before {
+  position:absolute;
+  content:'';
+  inset:0;
+  z-index:5;
+}
+
+
+
+.taxonomy-card__title {
+  z-index:3;
+  color: color(5);
+  font-family: Raleway;
+  font-weight: 700;
+  text-transform:uppercase;
+  text-align:center;
+  font-size:var(--fs-crd-l);
+  text-shadow: 1px 1px 4px color(26);
+  
+}
+.taxonomy-card__title a:before {
+  position:absolute;
+  content:'';
+  inset:0;
+  z-index:3
+}
+
+
+/*background images styles*/
+.taxonomy-card__img{
+
+  position:absolute;
+  z-index:0;
+  object-fit: cover;
+  inset:0;
+  height:100%;
+  width:100%;
+  
+}
+/*Overlay effect*/
+.taxonomy-card__overlay {
+  position:absolute;
+  content:'';
+  inset:0;
+  z-index:2;
+  background:color(18);
+  transition: 0.4s ease-out;
+}
+.taxonomy-card:hover .taxonomy-card__overlay {
+ background:color(25);
+}
